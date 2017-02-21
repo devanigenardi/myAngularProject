@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Angular</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.min.js"></script>
+<!--    <script src="js/js.js"></script>-->
+   
+   <script>
+       var app = angular.module('myApp', ['ngRoute']);
+       
+       app.controller('MainCtrl', function($scope){
+           var abc = "hello";
+           $scope.abc = abc;
+           
+           var mainTitle = "Insert here yor name";
+           $scope.mainTitle = mainTitle;
+           
+       });
+       
+       app.config(['$routeProvider', function($routeProvider){
+           
+           
+           $routeProvider.when('/', {templateUrl:'views/questions.html', controller:'MainCtrl'});
+           $routeProvider.when('/views/play', {templateUrl:'views/play.html', controller:'MainCtrl'});
+           $routeProvider.when('/views/terms', {templateUrl:'views/terms.html', controller:'MainCtrl'});
+           $routeProvider.otherwise({redirectTo:'/'});
+           
+       }])
+   </script>
+</head>
+<body>
+   
+   <div id="home" ng-controller="MainCtrl">
+      
+       <h1>{{ abc }}</h1>
+       <h2>{{ mainTitle }}</h2>
+       <ul>
+           <li><a href="#/views/play">link</a></li>
+           <li><a href="#/views/terms">link</a></li>
+       </ul>       
+       <div id="pageContent" ng-view>
+           
+       </div>
+       
+   </div>
+   
+   
+    
+</body>
+</html>

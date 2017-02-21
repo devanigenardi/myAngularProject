@@ -1,0 +1,14 @@
+<p>Enter question</p>
+<p>total question</p>
+
+
+<ul>
+    <li ng-repeat="name in quiz| filter:searchText">{{name.name + " tiene " + name.age + " y su genero es " + name.gender}}</li>
+</ul>
+<label>Search: <input ng-model="searchText"></label>
+<form name="quizForm" novalidate>
+    <input type="text" required ng-model="formQuestion" />
+    <input type="text" required ng-model="formAnswer" />
+</form>
+<button class="btn" ng-click="addItem(formQuestion,formAnswer)">click</button>
+<buton></buton>
